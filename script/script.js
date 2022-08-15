@@ -8,8 +8,32 @@ tag.src = 'https://www.youtube.com/iframe_api';
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
- var ytUrl ="https://www.googleapis.com/youtube/v3/search?part=snippet&q=music" + 
- "&key=" + {YTkey}
+//  var ytUrl ="https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ 
+//  search + "&key=" + {YTkey};
+
+
+
+
+
+function SearchHandler () {
+  var search = $('userSearch').val();
+  var ytUrl ="https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ 
+  search + "&key=" + YTkey;
+
+  fetch(ytUrl)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data)
+  })
+}
+
+
+
+
+
+
 
 
 
@@ -49,7 +73,7 @@ function stopVideo() {
   player.stopVideo();
 }
 
-$('#searchBtn').on('click', searchByKeyword());
+$('#searchBtn').on('click', SearchHandler());
 
 $(document).ready(function() {
   $.getScript("https://www.youtube.com/iframe_api", function() {
