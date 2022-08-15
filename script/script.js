@@ -16,7 +16,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 
 function SearchHandler () {
-  var search = $('userSearch').val();
+  var search = $('#userSearch').val().trim();
   var ytUrl ="https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ 
   search + "&key=" + YTkey;
 
@@ -26,14 +26,11 @@ function SearchHandler () {
   })
   .then(function(data) {
     console.log(data)
+    for(let i = 0; i > data.length; i++) {
+      //Append stuff here
+    }
   })
 }
-
-
-
-
-
-
 
 
 
