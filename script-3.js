@@ -47,7 +47,7 @@ function searchTrack() {
     
   }
 
-fetchButton.addEventListener('click', searchTrack); 
+fetchButton.addEventListener('click', searchTrackgi); 
 
 function selectLyric() { 
   var yourTrack = document.getElementById("selectTrack").value
