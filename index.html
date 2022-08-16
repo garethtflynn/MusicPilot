@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style-1.css">
+    <link rel="stylesheet" href="./assets/style-1.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Music Pilot</title>
     </head>
-    <body class = "bg-slate-600">
+    <body class = "bg-black-600">
         <header class = "bg-blue-800 p-1 text-6xl text-white text-center">Music Pilot</header>
         
-        <div>
-            <input type="Text" placeholder="search"  class="searchInput" id="searchInput">
-          
+        <div class="inputFormBtn justify-center items-center">
+            <div>
+                <input type="Text" placeholder="search"  class="searchInput flex justify-center" id="searchInput">
+            </div>
             <div>
             <button id='searchBtn' class="searchBtn">Search</button>
             </div>
@@ -31,7 +32,13 @@
 
         
         <div class = "columns-1 p-1 " id = "artists" class="artists">
-            <ul id = "artistList"></ul>
+            <ul id = "artistList" class="artistList">
+                <li class="artistList1"></li>
+                <li class="artistList2"></li>
+                <li class="artistList3"></li>
+                <li class="artistList4"></li>
+                <li class="artistList5"></li>
+            </ul>
         </div>
 
     
@@ -42,5 +49,5 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- <script src = "./script-1.js"></script> -->
-        <script src="./script-2.js"></script>
+        <script src="./assets/script-2.js"></script>
     </body>
