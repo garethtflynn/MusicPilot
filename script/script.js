@@ -1,6 +1,7 @@
 var MXkey = "e5af0c869b4e85411e984bc6931a21e6";
 var YTkey  = "AIzaSyCdpNay1bVFASd8Cw1s_VRNpRNmtjsJ23E";
 var YTkey2 = "AIzaSyABsJT9M2cE0YeNKNhK1EVlhfYteoR5unk";
+var YTkey3 = "AIzaSyAfmhJPjuQ9Bx4x6ayWP7wbCmYlzxE6Uj8";
 search = "";
 var resultUrl = "./SearchResults.html";
 var player = $('#player');
@@ -21,7 +22,7 @@ function onYouTubeIframeAPIReady() {
     }
   });
 }
-
+console.log(player)
 var tag = document.createElement('script');
 tag.src = 'https://www.youtube.com/iframe_api';
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -46,19 +47,18 @@ function stopVideo() {
 }
 
 
-// $(document).ready(function() {
-//   $.getScript("https://www.youtube.com/iframe_api", function() {
-//     onYouTubeIframeAPIReady();
-//   });
-// });
+$(document).ready(function() {
+  $.getScript("https://www.youtube.com/iframe_api", function() {
+    onYouTubeIframeAPIReady();
+  });
+});
 
 
-function SearchHandler (event) {
-  event.preventDefault();
+function SearchHandler () {
   var search = $('#userSearch').val().trim();
   console.log(search)
   var ytUrl="https://www.googleapis.com/youtube/v3/search?part=snippet&q="
-  +search+"&key="+YTkey;
+  +search+"&key="+YTkey3;
   fetch(ytUrl)
   .then(function(response) {
     return response.json();
@@ -75,8 +75,8 @@ function SearchHandler (event) {
         console.log(VideoId)
          var resultHTML=`
            <div class="p-2">
-            <h2 class="bg-stone-600 text-white">${titleEl}</h2>
-              <ul class="p-1 bg-slate-300 text-black">
+            <h2 class="bg-stone-600 text-3xl text-white">${titleEl}</h2>
+              <ul class="p-1 bg-slate-300 text-black text-lg">
                  <li class = "#"><img src="${thumbnail}"></li>
                  <span>${descr}</span>
                  <li>${channelTitle}</li>
@@ -90,5 +90,5 @@ function SearchHandler (event) {
 }
 
 
-$('#searchBtn').on('click', SearchHandler,);
+$('#searchBtn').on('click', SearchHandler);
 
