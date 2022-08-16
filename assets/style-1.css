@@ -1,0 +1,18 @@
+.searchInput {
+    align-items: center;
+    justify-content: center;
+    width: 300px
+}
+
+.searchBtn {
+    background-color: grey;
+    width: 300px;
+    margin-top: 5px; 
+    border-radius: 5px;
+}
+
+.searchBtn:hover{
+    opacity: 50%;
+    font-style: italic;
+    
+}
