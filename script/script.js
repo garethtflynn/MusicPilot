@@ -83,10 +83,13 @@ function SearchHandler () {
               </ul>
            </div>`;
            resultHTML+=`</div>`;
-           $('#results').append(resultHTML)
-        })
-      }
-    })
+           $('#player').attr("class", "display-none");
+           $('#results').attr("class", "display-inline-block")
+           $('#results').append(resultHTML);
+
+      })
+    }
+  })
 }
 
 
