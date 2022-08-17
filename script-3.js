@@ -52,7 +52,7 @@ function searchTrack() {
 function selectLyric() { 
   var yourTrack = document.getElementById("selectTrack").value
   // var artist = document.getElementById("yourArtist").value
-  var requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + yourTrack +"&q_artist=Nelly&apikey=e5af0c869b4e85411e984bc6931a21e6";
+  var requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" +"&q_artist=&apikey=e5af0c869b4e85411e984bc6931a21e6";
   // "https://cors-anywhere.herokuapp.com/
       fetch(requestUrl) 
       .then((response) => {
