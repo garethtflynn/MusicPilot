@@ -4,7 +4,7 @@ var YTkey2 = "AIzaSyABsJT9M2cE0YeNKNhK1EVlhfYteoR5unk";
 var YTkey3 = "AIzaSyAfmhJPjuQ9Bx4x6ayWP7wbCmYlzxE6Uj8";
 //var play=$('#playBtn');
 var pause=$('#pauseBtn');
-var play=$('playBtn');
+var play=$('#playBtn');
 search = "";
 VideoId="";
 
@@ -13,13 +13,10 @@ VideoId="";
 var player;
 function onYouTubeIframeAPIReady() {
   player = new window.YT.Player('player', {
-    width: 0,
-    height: 0,
-    videoId:'gwlNun99fKk',
-    // loadPlaylist:{
-    //   listType: "playlist",
-    //   list: "",
-    // },
+    width: 360,
+    height: 240,
+    videoId:'kffacxfA7G4',
+    playervars :{enablejsapi: 1},
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange,
@@ -33,11 +30,21 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //effects the state
 function onPlayerStateChange(event) {
+  $('#playBtn').on('click',function(){
+    if (event.data !== YT.PlayerState.PLAYING){
+      $('#playBtn').on('click',player.playVideo())
+    } else return;
+  })
+  $('#pauseBtn').on('click',function(){
+    if (event.data == YT.PlayerState.PLAYING){
+      $('#pauseBtn').on('click',player.pauseVideo())
+    } else return;
+  })
 
 }
 
 
-//stops the player.
+//stops the player I don't call this anywhere.
 function stopVideo() {
   player.stopVideo();
 }
