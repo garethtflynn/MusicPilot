@@ -9,49 +9,52 @@ var results = $('#results');
 //  var ytUrl ="https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ 
 //  search + "&key=" + {YTkey};
 
+function loadVideo() {
+  (function loadPlayer() {
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    tag.onload=onYouTubeIframeAPIReady;
+  })();
 
-var player= $('#player');
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    width: 480,
-    height: 360,
-    videoId: 'AdwkPTNnpA0',
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange,
-    }
+  var player;
+
+  function onYouTubeIframeAPIReady() {
+    window.YT.ready(function(){  
+      player = new window.YT.Player('player', {
+        width: 480,
+        height: 360,
+        videoId: 'AdwkPTNnpA0',
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange,
+        }
+      });
+    });
+  }
+    
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  };
+
+
+  function onPlayerStateChange(event) {
+  var videoStatus = Object.entries(window.YT.PlayerState);
+  console.log(videoStatus.find(status => status[1]===event.data)[0]);
+  }
+}
+
+if (document.readyState !== "loading") {
+  loadVideo();
+} else {
+  document.addEventListener("DOMContentLoaded",function(){
+    console.info(`DOMContentLoaded ==>`,document.readyState);
+    loadVideo()
   });
 }
-console.log(player)
-var tag = document.createElement('script');
-tag.src = 'https://www.youtube.com/iframe_api';
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-function onPlayerReady(event) {
-  player.loadVideoById();
-  event.target.playVideo();
-};
 
 
-function onPlayerStateChange(event) {
-
-}
-
-function playVideo (player) {
-
-}
-
-function stopVideo() {
-  player.stopVideo();
-}
-
-
-$(document).ready(function() {
-  $.getScript("https://www.youtube.com/iframe_api", function() {
-    onYouTubeIframeAPIReady();
-  });
-});
 
 
 function SearchHandler () {
@@ -75,7 +78,7 @@ function SearchHandler () {
         console.log(VideoId)
          var resultHTML=`
            <div class="p-2">
-            <h2 class="bg-stone-600 text-3xl text-white">${titleEl}</h2>
+            <h2 class="bg-stone-600 text-2xl text-white">${titleEl}</h2>
               <ul class="p-1 bg-slate-300 text-black text-lg">
                  <li class = "#"><img src="${thumbnail}"></li>
                  <span>${descr}</span>
