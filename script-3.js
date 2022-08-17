@@ -60,7 +60,12 @@ function selectLyric() {
       })
       .then(function (response) {
         console.log(response);
+        var displayLyrics = response.message.body.lyric_body
+        console.log(displayLyrics.lyric_body)
+        Display(displayLyrics)
       }); 
+      
+      // console.log(response.message.body.lyrics_body[0].yourTrack);
     // {
   //     method: "GET",
   //     headers: {
