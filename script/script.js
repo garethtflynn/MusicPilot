@@ -2,6 +2,11 @@ var MXkey = "e5af0c869b4e85411e984bc6931a21e6";
 var YTkey  = "AIzaSyCdpNay1bVFASd8Cw1s_VRNpRNmtjsJ23E";
 var YTkey2 = "AIzaSyABsJT9M2cE0YeNKNhK1EVlhfYteoR5unk";
 var YTkey3 = "AIzaSyAfmhJPjuQ9Bx4x6ayWP7wbCmYlzxE6Uj8";
+
+//var play=$('#playBtn');
+var pause=$('#pauseBtn');
+var play=$('#playBtn');
+
 search = "";
 VideoId="";
 
@@ -10,9 +15,16 @@ VideoId="";
 var player;
 function onYouTubeIframeAPIReady() {
   player = new window.YT.Player('player', {
+
+    width: 480,
+    height: 360,
+    videoId:'EDE-wuSTbPM',
+    playervars :{enablejsapi: 1},
+
     width: 0,
     height: 0,
     videoId:'gwlNun99fKk',
+
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange,
@@ -26,10 +38,23 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //effects the state
 function onPlayerStateChange(event) {
+  $('#playBtn').on('click',function(){
+    if (event.data !== YT.PlayerState.PLAYING){
+      $('#playBtn').on('click',player.playVideo())
+    } else return;
+  })
+  $('#pauseBtn').on('click',function(){
+    if (event.data == YT.PlayerState.PLAYING){
+      $('#pauseBtn').on('click',player.pauseVideo())
+    } else return;
+  })
+
 
 }
 
 
+
+//stops the player I don't call this anywhere.
 //stops the player.
 function stopVideo() {
   player.stopVideo();
