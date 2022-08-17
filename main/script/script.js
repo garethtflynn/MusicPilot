@@ -59,18 +59,14 @@ function SearchHandler () {
     return response.json();
   })
   .then(function(data) {
-    // for (let i=0; i < data.items.length; i++) {
-    //   $('#results').each(function() {
-
          var VideoId = data.items[0].id.videoId;
 
           console.log(VideoId);
           player.loadVideoById(VideoId);
 
-         })
-      //}
-    // })
+  })
 }
+
 
 function onPlayerReady(event) {
   // event.target.loadPlaylist()
