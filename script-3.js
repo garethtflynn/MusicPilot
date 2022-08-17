@@ -64,7 +64,7 @@ function selectLyric() {
         console.log(Objectresponse.message.body.lyrics.lyrics_body
       )
         lyricstext.textContent=Objectresponse.message.body.lyrics.lyrics_body
-      })
+      }) 
       
       // console.log(response.message.body.lyrics_body[0].yourTrack);
     // {
