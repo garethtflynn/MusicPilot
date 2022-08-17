@@ -11,6 +11,9 @@
     <body class = "bg-black-600">
         <header class = "bg-blue-800 p-1 text-6xl text-white text-center">Music Pilot</header>
         
+            <div>
+                <h2 class="message" id='message'></h2>
+            </div>
       
             <div class="inputForm">
                 <input type="Text" placeholder="search"  class="searchInput" id="searchInput">
@@ -25,12 +28,9 @@
         </div>
 
         <div class = "columns-1 p-1 tracks hide" id = "popTracks">
-            <ul id = "trackList" class="artistList">
+            <h3 class="poptrackHead">Top Hit:</h3>
+            <ul id = "trackList" class="trackList">
                 <button class="popTrack1 btn "></button>
-                <!-- <button class="popTrack2 btn "></button>
-                <button class="popTrack3 btn "></button>
-                <button class="popTrack4 btn "></button>
-                <button class="popTrack5 btn "></button> -->
             </ul>
         </div>
 
@@ -39,6 +39,7 @@
         </div> -->
 
         <div class = "columns-1 p-1  hide" id = "artists" class="artists">
+            <h3 class="artistListHead">Related Artists:</h3>
             <ul id = "artistList" class="artistList">
                 <button class="artistList1 btn "></button>
                 <button class="artistList2 btn "></button>

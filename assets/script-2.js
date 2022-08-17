@@ -7,9 +7,31 @@ const artists = document.getElementById('artists')
 const lyrics = document.getElementById('lyric')
 const searchBtn = document.getElementById('searchBtn')
 const tracks = document.getElementById('popTracks')
+const messageArea = document.getElementById('message')
+let message = 'search by artist and song name'
+let words = message.split(' ');
+
 $('#searchBtn').click(function() {
     getTrack ()
 })
+
+function displayMessage() {
+  let wordCount = 0;
+  // Uses the `setInterval()` method to call a function to be executed every 1000 milliseconds
+  let msgInterval = setInterval(function () {
+    // If there are no more words left in the message
+    if (words[wordCount] === undefined) {
+      // Use `clearInterval()` to stop the timer
+      clearInterval(msgInterval);
+    } else {
+      // Display one word of the message
+      messageArea.textContent = words[wordCount];
+      wordCount++;
+    }
+  }, 1000);
+}
+
+
 
 function getTrack () {
   let input = document.getElementById('searchInput').value
@@ -56,7 +78,6 @@ function getRelatedArtists (id) {
       });
 }
 
-
 function displayData (response) {
   artists.classList.remove('hide')
 
@@ -74,26 +95,4 @@ function displayTracks (popTracks) {
   $('.popTrack1').text(popTracks[0].track.track_name)
 }
 
-
-
-// function getArtist () {
-//     const artist = document.getElementById('searchInput').value
-//     let requestUrl = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/artist.search?q_artist=" + artist.split(' ').join('%20') + "&page_size=5&apikey=e5af0c869b4e85411e984bc6931a21e6"
-//     fetch(requestUrl,{
-//         cache: 'reload',
-//         method: "GET",
-//         headers: {
-//         "Content-Type": "application/json",
-//         },
-//         }
-//       )
-//         .then(function (response) {
-//           return response.json();
-//         })
-//         .then(function (response) {
-//           console.log(response);
-//           // console.log(response.message.body.artist_list[0].artist.artist_id)
-//           let id = response.message.body.artist_list[0].artist.artist_id
-//           getRelatedArtists (id)
-//         });   
-// }
+displayMessage ()

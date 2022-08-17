@@ -3,7 +3,17 @@
 }
 
 body {
+    font-family: monospace;
     background-color: black;
+    color: whitesmoke;
+}
+
+.message {
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 24px;
 }
 
 .inputForm {
@@ -32,6 +42,7 @@ body {
     width: 300px;
     margin-top: 5px; 
     border-radius: 5px;
+    color: black
 
 }
 
@@ -43,7 +54,7 @@ body {
 
 .artistList {
     color:whitesmoke;
-    
+
 }
 
 .btn {
