@@ -11,35 +11,47 @@
     <body class = "bg-black-600">
         <header class = "bg-blue-800 p-1 text-6xl text-white text-center">Music Pilot</header>
         
-        <div class="inputFormBtn justify-center items-center">
-            <div>
-                <input type="Text" placeholder="search"  class="searchInput flex justify-center" id="searchInput">
+      
+            <div class="inputForm">
+                <input type="Text" placeholder="search"  class="searchInput" id="searchInput">
             </div>
-            <div>
+            <div class="searchDiv">
             <button id='searchBtn' class="searchBtn">Search</button>
             </div>
-        </div>
 
 
         <div class ="container mx-auto px-4 float-left">
             <div class = "object-contain " id = "player"></div>
         </div>
 
-
-        <div class = "columns-1xs p-1 " id = "album">
-            <div></div>
-        </div>
-
-        
-        <div class = "columns-1 p-1 " id = "artists" class="artists">
-            <ul id = "artistList" class="artistList">
-                <li class="artistList1"></li>
-                <li class="artistList2"></li>
-                <li class="artistList3"></li>
-                <li class="artistList4"></li>
-                <li class="artistList5"></li>
+        <div class = "columns-1 p-1 tracks hide" id = "popTracks">
+            <ul id = "trackList" class="artistList">
+                <button class="popTrack1 btn "></button>
+                <button class="popTrack2 btn "></button>
+                <button class="popTrack3 btn "></button>
+                <button class="popTrack4 btn "></button>
+                <button class="popTrack5 btn "></button>
             </ul>
         </div>
+
+        <!-- <div class = "columns-1xs p-1 " id = "album">
+            <div></div>
+        </div> -->
+
+        
+        <div class = "columns-1 p-1  hide" id = "artists" class="artists">
+            <ul id = "artistList" class="artistList">
+                <button class="artistList1 btn "></button>
+                <button class="artistList2 btn "></button>
+                <button class="artistList3 btn "></button>
+                <button class="artistList4 btn "></button>
+                <button class="artistList5 btn "></button>
+            </ul>
+        </div>
+
+
+
+
 
     
         <div class = "container mx-auto px-4 float-right " id = "lyric">
