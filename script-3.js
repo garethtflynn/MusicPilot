@@ -47,38 +47,38 @@ function searchTrack() {
     
   }
 
-fetchButton.addEventListener('click', searchTrackgi); 
-
+// fetchButton.addEventListener('click', searchTrackgi); 
+// .addEventListener("searchBtn", selectLyric);
 function selectLyric() { 
   var yourTrack = document.getElementById("selectTrack").value
-  var artist = document.getElementById("yourArtist").value
-  var requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + yourTrack + "&q_artist&apikey=e5af0c869b4e85411e984bc6931a21e6",
-    
-      fetch(requestUrl, 
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    } 
-  )
+  // var artist = document.getElementById("yourArtist").value
+  var requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + yourTrack +"&q_artist=Beyonce&apikey=e5af0c869b4e85411e984bc6931a21e6";
+  // "https://cors-anywhere.herokuapp.com/
+      fetch(requestUrl) 
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (response) {
+        console.log(response);
+      }); 
+    // {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   } 
+  // )
     
       
     
       
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
-      console.log(response);
-    }); 
-    
+   
 
 } 
 searchButton.addEventListener('click', selectLyric); 
 
 
-
+// https://cors-anywhere.herokuapp.com/corsdemo
 
 
 
