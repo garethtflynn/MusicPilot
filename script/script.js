@@ -26,7 +26,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //effects the state
 function onPlayerStateChange(event) {
-
+  
 }
 
 
