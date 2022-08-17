@@ -51,8 +51,8 @@ function searchTrack() {
 // .addEventListener("searchBtn", selectLyric);
 function selectLyric() { 
   var yourTrack = document.getElementById("selectTrack").value
-  // var artist = document.getElementById("yourArtist").value
-  var requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" +"&q_artist=&apikey=e5af0c869b4e85411e984bc6931a21e6";
+  var artist = document.getElementById("yourArtist").value
+  var requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + yourTrack.split(" ").join("%20") +"&q_artist="+artist.split(" ").join("%20")+"&apikey=e5af0c869b4e85411e984bc6931a21e6";
   // "https://cors-anywhere.herokuapp.com/
       fetch(requestUrl) 
       .then((response) => {
@@ -60,7 +60,10 @@ function selectLyric() {
       })
       .then(function (Objectresponse){
         console.log(Objectresponse);
-        
+        var lyricstext= document.getElementById("lyricsdisplay")
+        console.log(Objectresponse.message.body.lyrics.lyrics_body
+      )
+        lyricstext.textContent=Objectresponse.message.body.lyrics.lyrics_body
       })
       
       // console.log(response.message.body.lyrics_body[0].yourTrack);
@@ -72,7 +75,6 @@ function selectLyric() {
   //   } 
   // )
     
-      
     
       
    
