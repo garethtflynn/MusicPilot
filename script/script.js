@@ -13,8 +13,8 @@ VideoId="";
 var player;
 function onYouTubeIframeAPIReady() {
   player = new window.YT.Player('player', {
-    width: 360,
-    height: 240,
+    width: 480,
+    height: 360,
     videoId:'kffacxfA7G4',
     playervars :{enablejsapi: 1},
     events: {
