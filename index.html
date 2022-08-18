@@ -4,47 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>Music Pilot</title>
-    </head>
-    <body class = "bg-slate-600">
-        <header class = "bg-blue-800 p-1 text-6xl text-white text-center width-100%">Music Pilot</header>
-        
+</head>
+<body>
+    <header class = "bg-blue-800 p-1 text-6xl text-white text-center width-100%">Music Pilot</header>
+    <div>
+        <h2 class="message" id='message'></h2>
+    </div>
+    <div>
+        <form>
+            <input type = "text" class= "px-3 py-2" id ="searchInput"  placeholder="search">
+        <button type = "button" class = "bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-4 rounded" id = "searchBtn">SEARCH</button>
+            
+    </div>
+    <div class="object-contain" frameborder="0" id = "player"></div>
+    </div>
+    <div class = "columns-1 p-1 tracks hide" id = "popTracks">
+        <h3 class="poptrackHead">Top Hit:</h3>
+        <ul id = "trackList" class="trackList">
+            <button class="popTrack1 btn "></button>
+        </ul>
+    </div>
 
+    <div class = "columns-1 p-1  hide" id = "artists" class="artists">
+        <h3 class="artistListHead">Related Artists:</h3>
+        <ul id = "artistList" class="artistList">
+            <button class="artistList1 btn "></button>
+            <button class="artistList2 btn "></button>
+            <button class="artistList3 btn "></button>
+            <button class="artistList4 btn "></button>
+            <button class="artistList5 btn "></button>
+        </ul>
+    </div>
 
+    <div class = "container mx-auto px-4 float-right " id = "lyric">
+        <p id = "lyricdisplay"></p>
+    </div>
 
-        <div class ="container mx-auto px-4 float-left">
-            <div>
-                <form>
-                    <input type = "text" class= "px-3 py-2" id ="yourLyrics"  placeholder="search">
-                <button type = "button" class = "bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-4 rounded" id = "searchBtn">SEARCH</button>
-            </div>
-            <div class="object-contain" frameborder="0" id = "player"></div>
-        </div>
-        
-
-        <div class = "columns-1xs p-1" id = "album">
-        </div>
-
-        
-        <div class = "columns-1 p-1" id = "artists">
-            <ul id = "artistList"></ul>
-        </div>
-
-    
-        <div class = "container mx-auto px-4 float-right" id = "lyric">
-            <p id = "lyricsdisplay"></p>
-        </div>
-
-
-
-
-
-
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src = "./script/script.js"></script>
-    </body>
+    <div class="savedArea hide">
+        <h3>Saved Artists & Songs:</h3>
+        <div id="savedData"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./assets/script-2.js"></script>
+</body>
 </html>
-
