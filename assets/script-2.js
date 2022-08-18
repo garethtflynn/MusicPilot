@@ -37,7 +37,7 @@ function displayMessage() {
 function getTrack () {
   let input = document.getElementById('searchInput').value
   console.log(input)
-  let requestUrl = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" + input.split(' ').join('%20') + "&s_track_rating=desc&page_size=5&page=1&apikey=e5af0c869b4e85411e984bc6931a21e6"
+  let requestUrl = "https://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" + input.split(' ').join('%20') + "&s_track_rating=desc&page_size=5&page=1&apikey=e5af0c869b4e85411e984bc6931a21e6"
 
   fetch(requestUrl,{
     cache: 'reload',
@@ -62,7 +62,7 @@ function getTrack () {
 }
 
 function getRelatedArtists (id) { 
-    let requestUrl = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/artist.related.get?artist_id=" + id[0].track.artist_id + "&page_size=2&page=1&page_size=5&apikey=e5af0c869b4e85411e984bc6931a21e6"
+    let requestUrl = "https://api.musixmatch.com/ws/1.1/artist.related.get?artist_id=" + id[0].track.artist_id + "&page_size=2&page=1&page_size=5&apikey=e5af0c869b4e85411e984bc6931a21e6"
         fetch(requestUrl,{
         method: "GET",
         headers: {
@@ -143,7 +143,7 @@ var tag = document.createElement('script');
 tag.src = 'https://www.youtube.com/iframe_api';
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//effects the state
+//effects the state (external buttons)
 function onPlayerStateChange(event) {
   $('#playBtn').on('click',function(){
     if (event.data !== YT.PlayerState.PLAYING){
@@ -168,7 +168,7 @@ function SearchHandler () {
   var search = $('#searchInput').val();
   console.log(search)
   var ytUrl="https://www.googleapis.com/youtube/v3/search?part=snippet&q="
-  +search+"&type=video"+"&videoEmbeddable=true"+"&key="+YTkey3;
+  +search+"&type=video"+"&videoEmbeddable=true"+"&videoSyndicated=true"+"&key="+YTkey3;
   fetch(ytUrl)
   .then(function(response) {
     return response.json();
