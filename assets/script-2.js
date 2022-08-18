@@ -91,6 +91,10 @@ function displayData (response) {
 function displayTracks (popTracks) {
   tracks.classList.remove('hide')
   $('.popTrack1').text(popTracks[0].track.track_name)
+  $('.popTrack2').text(popTracks[1].track.track_name)
+  $('.popTrack3').text(popTracks[2].track.track_name)
+  $('.popTrack4').text(popTracks[3].track.track_name)
+  $('.popTrack5').text(popTracks[4].track.track_name)
 }
 
 displayMessage ()
@@ -111,8 +115,6 @@ function showFavorites () {
     var createItem = document.createElement('list')
     createItem.classList.add
     createItem.textContent = favoritesList[i]
-
-
   }
 }
 
@@ -129,7 +131,7 @@ function onYouTubeIframeAPIReady() {
     // ^ enables the external buttons.
     width: 0,
     height: 0,
-    videoId:'gwlNun99fKk',
+    videoId:'Abrn8aVQ76Q',
 
     events: {
       'onReady': onPlayerReady,
@@ -165,7 +167,7 @@ function stopVideo() {
 //takes the search input and plays the first result.
 function SearchHandler () {
   var search = $('#searchInput').val();
-  var ytUrl="https://www.googleapis.com/youtube/v3/search?part=snippet&"
+  var ytUrl="https://www.googleapis.com/youtube/v3/search?part=snippet"
   +"&type=video"+"&regionCode=us"+"&videoSyndicated=true"+"&q="+search+"&key="+YTkey3;
   fetch(ytUrl)
   .then(function(response) {
