@@ -13,30 +13,30 @@ var favoritesStored = JSON.parse(localStorage.getItem('savedFavorites')) || []
 let message = 'search by artist and song name'
 let words = message.split(' ');
 
+//click function sets everythign off
 $('#searchBtn').click(function() {
     getTrack ()
 })
-
+//meessage display that instructs user on how and what to search
 function displayMessage() {
   let wordCount = 0;
-  // Uses the `setInterval()` method to call a function to be executed every 1000 milliseconds
   let msgInterval = setInterval(function () {
-    // If there are no more words left in the message
     if (words[wordCount] === undefined) {
-      // Use `clearInterval()` to stop the timer
+
       clearInterval(msgInterval);
     } else {
-      // Display one word of the message
+
       messageArea.textContent = words[wordCount];
       wordCount++;
     }
   }, 1000);
 }
 
+// first API fetch that gets ID and track data that is used in the next requests
 function getTrack () {
   let input = document.getElementById('searchInput').value
   console.log(input)
-  let requestUrl = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" + input.split(' ').join('%20') + "&s_track_rating=desc&page_size=5&page=1&apikey=e5af0c869b4e85411e984bc6931a21e6"
+  let requestUrl = "https://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" + input.split(' ').join('%20') + "&s_track_rating=desc&page_size=5&page=1&apikey=e5af0c869b4e85411e984bc6931a21e6"
 
   fetch(requestUrl,{
     cache: 'reload',
@@ -61,8 +61,9 @@ function getTrack () {
   });
 }
 
+// select lyric funtion takes the popular track name and artist name from the original fetch call and uses that to get the lyrics from the searched song
 function selectLyric(popTracks, id) { 
-  let requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + popTracks[0].track.track_name +"&q_artist="+ id[0].track.artist_name +"&apikey=e5af0c869b4e85411e984bc6931a21e6"
+  let requestUrl="https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + popTracks[0].track.track_name +"&q_artist="+ id[0].track.artist_name +"&apikey=e5af0c869b4e85411e984bc6931a21e6"
 
   fetch(requestUrl,{
     method: "GET",
@@ -81,8 +82,9 @@ function selectLyric(popTracks, id) {
   });
 } 
 
+// this gets the related artists with the data from the first 'getTrack; function 
 function getRelatedArtists (id) { 
-    let requestUrl = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/artist.related.get?artist_id=" + id[0].track.artist_id + "&page_size=2&page=1&page_size=5&apikey=e5af0c869b4e85411e984bc6931a21e6"
+    let requestUrl = "https://api.musixmatch.com/ws/1.1/artist.related.get?artist_id=" + id[0].track.artist_id + "&page_size=2&page=1&page_size=5&apikey=e5af0c869b4e85411e984bc6931a21e6"
         fetch(requestUrl,{
         method: "GET",
         headers: {
@@ -99,6 +101,7 @@ function getRelatedArtists (id) {
       });
 }
 
+// displays top 5 related artists to who we searched
 function displayData (response) {
   artists.classList.remove('hide')
     $('.artistList1').text(response.message.body.artist_list[0].artist.artist_name)
@@ -108,18 +111,22 @@ function displayData (response) {
     $('.artistList5').text(response.message.body.artist_list[4].artist.artist_name)    
 }
 
+// displays the top bit for what song we searched
 function displayTracks (popTracks) {
   tracks.classList.remove('hide')
   $('.popTrack1').text(popTracks[0].track.track_name)
 }
 
+// displays lyrics to what song we searched in the designated area
 function displayLyrics (lyrics) {
   $('#lyricdisplay').text(lyrics)
 
 }
 
+// calls the display message function
 displayMessage ()
 
+// clickable feature to save artists in a designated area for future reference and discover
 $('#artistList').click(function (event){
 
 console.log(event.target.textContent)
@@ -129,6 +136,7 @@ if (!favoritesStored.includes(event.target.textContent)) {
 } 
 })
 
+// appends favorites list onto the document 
 function showFavorites () {
   var favoritesList = JSON.parse(localStorage.getItem  ('savedFavorites'))
   var listItem = document.getElementById('savedData')
