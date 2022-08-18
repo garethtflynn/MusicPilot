@@ -56,9 +56,30 @@ function getTrack () {
     console.log(popTracks[0].track.track_name)
     console.log(id[0].track.artist_id)
     displayTracks (popTracks)
+    selectLyric (popTracks, id)
     getRelatedArtists (id)
   });
 }
+
+function selectLyric(popTracks, id) { 
+  let requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + popTracks[0].track.track_name +"&q_artist="+ id[0].track.artist_name +"&apikey=e5af0c869b4e85411e984bc6931a21e6"
+
+  fetch(requestUrl,{
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (response) {
+    console.log(response);
+    let lyrics = response.message.body.lyrics.lyrics_body
+    displayLyrics (lyrics)
+  });
+} 
 
 function getRelatedArtists (id) { 
     let requestUrl = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/artist.related.get?artist_id=" + id[0].track.artist_id + "&page_size=2&page=1&page_size=5&apikey=e5af0c869b4e85411e984bc6931a21e6"
@@ -92,6 +113,11 @@ function displayTracks (popTracks) {
   $('.popTrack1').text(popTracks[0].track.track_name)
 }
 
+function displayLyrics (lyrics) {
+  $('#lyricdisplay').text(lyrics)
+
+}
+
 displayMessage ()
 
 $('#artistList').click(function (event){
@@ -108,9 +134,7 @@ function showFavorites () {
   var listItem = document.getElementById('savedData')
   for (i = 0; i < favoritesList.length; i++){
     var createItem = document.createElement('list')
-    createItem.classList.add
+    createItem.classList.add('savedData')
     createItem.textContent = favoritesList[i]
-
-
   }
 }
