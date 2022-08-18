@@ -157,13 +157,10 @@ function showFavorites () {
 var player;
 function onYouTubeIframeAPIReady() {
   player = new window.YT.Player('player', {
-
-    width: 480,
-    height: 360,
+    width: '100%',
+    height: 560,
     playervars :{enablejsapi: 1},
     // ^ enables the external buttons.
-    width: 0,
-    height: 0,
     videoId:'Abrn8aVQ76Q',
 
     events: {
