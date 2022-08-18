@@ -1,13 +1,15 @@
 // variables
-const MXkey = "e5af0c869b4e85411e984bc6931a21e6";
+const keyOne = "e5af0c869b4e85411e984bc6931a21e6";
 const keyTwo = '94f7f3b394e8942a053cfff9527a4df7'
-const musixUrl = "https://api.musixmatch.com/ws/1.1/" + MXkey;
+const musixUrl = "https://api.musixmatch.com/ws/1.1/" + keyOne || keyTwo;
 const album = document.getElementById('album')
 const artists = document.getElementById('artists')
 const lyrics = document.getElementById('lyric')
 const searchBtn = document.getElementById('searchBtn')
 const tracks = document.getElementById('popTracks')
 const messageArea = document.getElementById('message')
+const saved = document.getElementById('savedData')
+var favoritesStored = JSON.parse(localStorage.getItem('savedFavorites')) || [] 
 let message = 'search by artist and song name'
 let words = message.split(' ');
 
@@ -30,8 +32,6 @@ function displayMessage() {
     }
   }, 1000);
 }
-
-
 
 function getTrack () {
   let input = document.getElementById('searchInput').value
@@ -80,7 +80,6 @@ function getRelatedArtists (id) {
 
 function displayData (response) {
   artists.classList.remove('hide')
-
     $('.artistList1').text(response.message.body.artist_list[0].artist.artist_name)
     $('.artistList2').text(response.message.body.artist_list[1].artist.artist_name)
     $('.artistList3').text(response.message.body.artist_list[2].artist.artist_name)
@@ -90,9 +89,28 @@ function displayData (response) {
 
 function displayTracks (popTracks) {
   tracks.classList.remove('hide')
-  // popTracks[0].track.track_name
-
   $('.popTrack1').text(popTracks[0].track.track_name)
 }
 
 displayMessage ()
+
+$('#artistList').click(function (event){
+
+console.log(event.target.textContent)
+if (!favoritesStored.includes(event.target.textContent)) {
+  favoritesStored.push(event.target.textContent)
+  localStorage.setItem('savedFavorites', JSON.stringify(favoritesStored))
+} 
+})
+
+function showFavorites () {
+  var favoritesList = JSON.parse(localStorage.getItem  ('savedFavorites'))
+  var listItem = document.getElementById('savedData')
+  for (i = 0; i < favoritesList.length; i++){
+    var createItem = document.createElement('list')
+    createItem.classList.add
+    createItem.textContent = favoritesList[i]
+
+
+  }
+}
