@@ -7,46 +7,51 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <title>Music Pilot</title>
 </head>
-<body class = "bg-slate-600">
-    <header class = "bg-blue-800 p-1 text-6xl text-white text-center width-100%">Music Pilot</header>
-    <div>
-        <h2 class="message" id='message'></h2>
+<body class="bg-purple-900">
+    <header class="bg-blue-400 p-1 text-6xl text-white text-center width-100%">Music Pilot</header>
+    <div class="p-1">
+        <h2 class="message bg-red-300 text-white text-center text-3xl" id='message'></h2>
     </div>
     <div>
         <form>
-            <input type = "text" class= "px-3 py-2" id ="searchInput"  placeholder="search">
-        <button type = "button" class = "bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-4 rounded" id = "searchBtn">SEARCH</button>
+            <input type="text" class="px-3 py-2" id="searchInput"  placeholder="search">
+        <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-4 rounded" id="searchBtn">SEARCH</button>
             
     </div>
     <div class="object-contain" frameborder="0" id = "player"></div>
-         <button type="button" class = "bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-8 rounded" id="playBtn">Play</button>
-         <button type="button" class = "bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-8 rounded" id="pauseBtn">Pause</button>
+         <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-8 rounded p-1" id="playBtn">Play</button>
+         <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-8 rounded p-1" id="pauseBtn">Pause</button>
     </div>
-    <div class = "columns-1 p-1 tracks hide" id = "popTracks">
-        <h3 class="poptrackHead">Top Hit:</h3>
-        <ul id = "trackList" class="trackList">
-            <button class="popTrack1 btn "></button>
-        </ul>
-    </div>
+    <div class="grid grid-cols-3 tracks p-3" id = "popTracks">
+        <div class="p-1">
+            <h3 class="poptrackHead bg-blue-400 text-white text-center text-3xl">Top Search Hits:</h3>
+            <ul id = "trackList" class="trackList">
+                <li class="popTrack1 btn bg-purple-600 text-white text-center text-xl"></li>
+                <li class="popTrack2 btn bg-purple-600 text-white text-center text-xl"></li>
+                <li class="popTrack3 btn bg-purple-600 text-white text-center text-xl"></li>
+                <li class="popTrack4 btn bg-purple-600 text-white text-center text-xl"></li>
+                <li class="popTrack5 btn bg-purple-600 text-white text-center text-xl"></li>
+            </ul>
+        </div>
 
-    <div class = "columns-1 p-1  hide" id = "artists" class="artists">
-        <h3 class="artistListHead">Related Artists:</h3>
-        <ul id = "artistList" class="artistList">
-            <button class="artistList1 btn "></button>
-            <button class="artistList2 btn "></button>
-            <button class="artistList3 btn "></button>
-            <button class="artistList4 btn "></button>
-            <button class="artistList5 btn "></button>
-        </ul>
-    </div>
+        <div class="p-1" id="artists" class="artists">
+            <h3 class="artistListHead bg-blue-400 text-white text-center text-3xl">Related Artists:</h3>
+            <ul id = "artistList" class="artistList">
+                <li class="artistList1 text-center bg-purple-600 text-white text-xl"></li>
+                <li class="artistList2 text-center bg-purple-600 text-white text-xl"></li>
+                <li class="artistList3 text-center bg-purple-600 text-white text-xl"></li>
+                <li class="artistList4 text-center bg-purple-600 text-white text-xl"></li>
+                <li class="artistList5 text-center bg-purple-600 text-white text-xl"></li>
+            </ul>
+        </div>
 
-    <div class = "container mx-auto px-4 float-right " id = "lyric">
-        <p id = "lyricdisplay"></p>
+        <div class="savedArea p-1 hide">
+            <h3 class=" bg-blue-400 text-white text-center text-3xl">Saved Artists & Songs:</h3>
+            <div id="savedData" class="bg-purple-600 text-white text-xl"></div>
     </div>
-
-    <div class="savedArea hide">
-        <h3>Saved Artists & Songs:</h3>
-        <div id="savedData"></div>
+    
+    <div class="container mx-auto px-4 float-right " id ="lyric">
+        <p id="lyricdisplay"></p>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/script-2.js"></script>
