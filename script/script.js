@@ -53,8 +53,6 @@ function onPlayerStateChange(event) {
       $('#pauseBtn').on('click',player.pauseVideo())
     } else return;
   })
-
-
 }
 
 function searchTrack() {
