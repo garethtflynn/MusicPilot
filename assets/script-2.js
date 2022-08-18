@@ -12,7 +12,7 @@ const saved = document.getElementById('savedData')
 var favoritesStored = JSON.parse(localStorage.getItem('savedFavorites')) || [] 
 let message = 'search by artist and song name'
 let words = message.split(' ');
-const YTkey3 = "AIzaSyAfmhJPjuQ9Bx4x6ayWP7wbCmYlzxE6Uj8";
+const YTkey3 = "AIzaSyCyrinmXCmS7D1f9QIrL2Cfnt-0B3pCgfY";
 
 $('#searchBtn').click(function() {
     getTrack (), SearchHandler()
@@ -116,7 +116,7 @@ function showFavorites () {
   }
 }
 
-//asynchronysly loads the player; don't know what asynchronus means.
+//asynchronysly loads the player; don't know what asynchronys means.
 
 
 var player;
@@ -125,9 +125,8 @@ function onYouTubeIframeAPIReady() {
 
     width: 480,
     height: 360,
-    videoId:'EDE-wuSTbPM',
     playervars :{enablejsapi: 1},
-
+    // ^ enables the external buttons.
     width: 0,
     height: 0,
     videoId:'gwlNun99fKk',
@@ -166,9 +165,8 @@ function stopVideo() {
 //takes the search input and plays the first result.
 function SearchHandler () {
   var search = $('#searchInput').val();
-  console.log(search)
-  var ytUrl="https://www.googleapis.com/youtube/v3/search?part=snippet&q="
-  +search+"&type=video"+"&videoEmbeddable=true"+"&videoSyndicated=true"+"&key="+YTkey3;
+  var ytUrl="https://www.googleapis.com/youtube/v3/search?part=snippet&"
+  +"&type=video"+"&regionCode=us"+"&videoSyndicated=true"+"&q="+search+"&key="+YTkey3;
   fetch(ytUrl)
   .then(function(response) {
     return response.json();
@@ -176,6 +174,7 @@ function SearchHandler () {
   .then(function(data) {
          var VideoId = data.items[0].id.videoId;
           console.log(VideoId);
+          player.cueVideoById(VideoId);
           player.loadVideoById(VideoId);
   })
 }
