@@ -151,6 +151,7 @@ function showFavorites () {
     createItem.textContent = favoritesList[i]
   }
   
+}
 
 //asynchronysly loads the player; don't know what asynchronys means.
 
@@ -219,5 +220,3 @@ function SearchHandler () {
  function onPlayerReady(event) {
   event.target.playVideo();
 };
-
-
