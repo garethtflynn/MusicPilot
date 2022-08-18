@@ -37,7 +37,7 @@ function displayMessage() {
 function getTrack () {
   let input = document.getElementById('searchInput').value
   console.log(input)
-  let requestUrl = "https://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" + input.split(' ').join('%20') + "&s_track_rating=desc&page_size=5&page=1&apikey=e5af0c869b4e85411e984bc6931a21e6"
+  let requestUrl = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track_artist=" + input.split(' ').join('%20') + "&s_track_rating=desc&page_size=5&page=1&apikey=e5af0c869b4e85411e984bc6931a21e6"
 
   fetch(requestUrl,{
     cache: 'reload',
@@ -64,7 +64,7 @@ function getTrack () {
 
 // select lyric funtion takes the popular track name and artist name from the original fetch call and uses that to get the lyrics from the searched song
 function selectLyric(popTracks, id) { 
-  let requestUrl="https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + popTracks[0].track.track_name +"&q_artist="+ id[0].track.artist_name +"&apikey=e5af0c869b4e85411e984bc6931a21e6"
+  let requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + popTracks[0].track.track_name +"&q_artist="+ id[0].track.artist_name +"&apikey=e5af0c869b4e85411e984bc6931a21e6"
 
   fetch(requestUrl,{
     method: "GET",
@@ -85,7 +85,7 @@ function selectLyric(popTracks, id) {
 
 // this gets the related artists with the data from the first 'getTrack; function 
 function getRelatedArtists (id) { 
-    let requestUrl = "https://api.musixmatch.com/ws/1.1/artist.related.get?artist_id=" + id[0].track.artist_id + "&page_size=2&page=1&page_size=5&apikey=e5af0c869b4e85411e984bc6931a21e6"
+    let requestUrl = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/artist.related.get?artist_id=" + id[0].track.artist_id + "&page_size=2&page=1&page_size=5&apikey=e5af0c869b4e85411e984bc6931a21e6"
         fetch(requestUrl,{
         method: "GET",
         headers: {
@@ -125,7 +125,6 @@ function displayTracks (popTracks) {
 // displays lyrics to what song we searched in the designated area
 function displayLyrics (lyrics) {
   $('#lyricdisplay').text(lyrics)
-
 }
 
 // calls the display message function
@@ -152,7 +151,6 @@ function showFavorites () {
   }
   
 }
-
 //asynchronysly loads the player; don't know what asynchronys means.
 
 
@@ -174,6 +172,7 @@ function onYouTubeIframeAPIReady() {
     }
   });
 }
+
 //more of the asynchronus stuff the google demi-gods sent.
 var tag = document.createElement('script');
 tag.src = 'https://www.youtube.com/iframe_api';
@@ -218,5 +217,6 @@ function SearchHandler () {
 
 //plays the video.
  function onPlayerReady(event) {
-  event.target.playVideo();
-};
+  event.target.playVideo()
+}
+showFavorites();
