@@ -125,7 +125,6 @@ function displayTracks (popTracks) {
 // displays lyrics to what song we searched in the designated area
 function displayLyrics (lyrics) {
   $('#lyricdisplay').text(lyrics)
-
 }
 
 // calls the display message function
@@ -152,7 +151,6 @@ function showFavorites () {
   }
   
 }
-
 //asynchronysly loads the player; don't know what asynchronys means.
 
 
@@ -174,6 +172,7 @@ function onYouTubeIframeAPIReady() {
     }
   });
 }
+
 //more of the asynchronus stuff the google demi-gods sent.
 var tag = document.createElement('script');
 tag.src = 'https://www.youtube.com/iframe_api';
@@ -218,5 +217,6 @@ function SearchHandler () {
 
 //plays the video.
  function onPlayerReady(event) {
-  event.target.playVideo();
-};
+  event.target.playVideo()
+}
+showFavorites();

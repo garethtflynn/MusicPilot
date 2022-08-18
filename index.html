@@ -13,14 +13,17 @@
         <h2 class="message bg-red-300 text-white text-center text-3xl" id='message'></h2>
     </div>
     <div>
-        <form>
-            <input type="text" class="px-3 py-2" id="searchInput"  placeholder="search">
-        <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-4 rounded" id="searchBtn">SEARCH</button>
-            
-    </div>
-    <div class="object-contain" frameborder="0" id = "player"></div>
-         <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-8 rounded p-1" id="playBtn">Play</button>
-         <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-8 rounded p-1" id="pauseBtn">Pause</button>
+        <div>
+            <form>
+                <input type="text" class="px-3 py-2" id="searchInput"  placeholder="search">
+                <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-4 rounded" id="searchBtn">SEARCH</button>
+                <div class="object-contain" frameborder="0" id = "player"></div>
+                <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-8 rounded p-1" id="playBtn">Play</button>
+                <button type="button" class="bg-pink-400 hover:bg-green-300 text-white font-bold py-2 px-8 rounded p-1" id="pauseBtn">Pause</button>
+
+        <div class="container mx-auto px-4 float-right text-lg text-center inline-block" id ="lyric">
+            <p id="lyricdisplay" class="text-white"></p>
+        </div>
     </div>
     <div class="grid grid-cols-3 tracks p-3" id = "popTracks">
         <div class="p-1">
@@ -50,9 +53,6 @@
             <div id="savedData" class="bg-purple-600 text-white text-xl"></div>
     </div>
     
-    <div class="container mx-auto px-4 float-right " id ="lyric">
-        <p id="lyricdisplay"></p>
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/script-2.js"></script>
 </body>
