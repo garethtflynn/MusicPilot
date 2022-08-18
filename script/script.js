@@ -58,14 +58,13 @@ function onPlayerStateChange(event) {
 function searchTrack() {
   // Insert the API url to get a list of your repos
   var requestUrl = "https://api.musixmatch.com/ws/1.1/artist.search?q_artist=prodigy&page_size=5&apikey="+myApiKey;
-  fetch(requestUrl
+  fetch(requestUrl,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-    }
-  )
+    })
     .then(function (response) {
       return response.json();
     })
