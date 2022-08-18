@@ -2,6 +2,9 @@ var MXkey = "e5af0c869b4e85411e984bc6931a21e6";
 var YTkey  = "AIzaSyCdpNay1bVFASd8Cw1s_VRNpRNmtjsJ23E";
 var YTkey2 = "AIzaSyABsJT9M2cE0YeNKNhK1EVlhfYteoR5unk";
 var YTkey3 = "AIzaSyAfmhJPjuQ9Bx4x6ayWP7wbCmYlzxE6Uj8";
+var myApiKey = "e5af0c869b4e85411e984bc6931a21e6"; 
+var searchButton = document.getElementById('searchBtn');
+
 
 //var play=$('#playBtn');
 var pause=$('#pauseBtn');
@@ -54,7 +57,47 @@ function onPlayerStateChange(event) {
 
 }
 
+function searchTrack() {
+  // Insert the API url to get a list of your repos
+  var requestUrl = "https://api.musixmatch.com/ws/1.1/artist.search?q_artist=prodigy&page_size=5&apikey="+myApiKey;
+  fetch(
+    "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/artist.search?q_artist=beyonce&page_size=5&apikey="+myApiKey,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      console.log(response);
+    }); 
+    
+  }
 
+// fetchButton.addEventListener('click', searchTrackgi); 
+// .addEventListener("searchBtn", selectLyric);
+function selectLyric() { 
+  var yourTrack = document.getElementById("selectTrack").value
+  var artist = document.getElementById("yourArtist").value
+  var requestUrl="https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=" + yourTrack.split(" ").join("%20") +"&q_artist="+artist.split(" ").join("%20")+"&apikey="+myApiKey;
+  // "https://cors-anywhere.herokuapp.com/
+      fetch(requestUrl) 
+      .then((response) => {
+        return response.json();
+      })
+      .then(function (Objectresponse){
+        console.log(Objectresponse);
+        var lyricstext= document.getElementById("lyricsdisplay")
+        console.log(Objectresponse.message.body.lyrics.lyrics_body
+      )
+        lyricstext.textContent=Objectresponse.message.body.lyrics.lyrics_body
+      }) 
+} 
+searchButton.addEventListener('click', selectLyric); 
 
 //stops the player I don't call this anywhere.
 //stops the player.
