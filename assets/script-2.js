@@ -12,10 +12,11 @@ const saved = document.getElementById('savedData')
 var favoritesStored = JSON.parse(localStorage.getItem('savedFavorites')) || [] 
 let message = 'search by artist and song name'
 let words = message.split(' ');
+const YTkey3 = "AIzaSyCyrinmXCmS7D1f9QIrL2Cfnt-0B3pCgfY";
 
 //click function sets everythign off
 $('#searchBtn').click(function() {
-    getTrack ()
+    getTrack (), SearchHandler()
 })
 //meessage display that instructs user on how and what to search
 function displayMessage() {
@@ -115,6 +116,10 @@ function displayData (response) {
 function displayTracks (popTracks) {
   tracks.classList.remove('hide')
   $('.popTrack1').text(popTracks[0].track.track_name)
+  $('.popTrack2').text(popTracks[1].track.track_name)
+  $('.popTrack3').text(popTracks[2].track.track_name)
+  $('.popTrack4').text(popTracks[3].track.track_name)
+  $('.popTrack5').text(popTracks[4].track.track_name)
 }
 
 // displays lyrics to what song we searched in the designated area
@@ -145,4 +150,74 @@ function showFavorites () {
     createItem.classList.add('savedData')
     createItem.textContent = favoritesList[i]
   }
+  
+
+//asynchronysly loads the player; don't know what asynchronys means.
+
+
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new window.YT.Player('player', {
+
+    width: 480,
+    height: 360,
+    playervars :{enablejsapi: 1},
+    // ^ enables the external buttons.
+    width: 0,
+    height: 0,
+    videoId:'Abrn8aVQ76Q',
+
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange,
+    }
+  });
 }
+//more of the asynchronus stuff the google demi-gods sent.
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//effects the state (external buttons)
+function onPlayerStateChange(event) {
+  $('#playBtn').on('click',function(){
+    if (event.data !== YT.PlayerState.PLAYING){
+      $('#playBtn').on('click',player.playVideo())
+    } else return;
+  })
+  $('#pauseBtn').on('click',function(){
+    if (event.data == YT.PlayerState.PLAYING){
+      $('#pauseBtn').on('click',player.pauseVideo())
+    } else return;
+  })
+}
+
+//stops the player I don't call this anywhere.
+//stops the player.
+function stopVideo() {
+  player.stopVideo();
+}
+
+//takes the search input and plays the first result.
+function SearchHandler () {
+  var search = $('#searchInput').val();
+  var ytUrl="https://www.googleapis.com/youtube/v3/search?part=snippet"
+  +"&type=video"+"&regionCode=us"+"&videoSyndicated=true"+"&q="+search+"&key="+YTkey3;
+  fetch(ytUrl)
+  .then(function(response) {
+    return response.json();
+  })//selects the top search result to shove into the player.
+  .then(function(data) {
+         var VideoId = data.items[0].id.videoId;
+          console.log(VideoId);
+          player.cueVideoById(VideoId);
+          player.loadVideoById(VideoId);
+  })
+}
+
+//plays the video.
+ function onPlayerReady(event) {
+  event.target.playVideo();
+};
+
+
