@@ -50,11 +50,7 @@ function onPlayerStateChange(event) {
       $('#pauseBtn').on('click',player.pauseVideo())
     } else return;
   })
-
-
 }
-
-
 
 //stops the player I don't call this anywhere.
 //stops the player.
