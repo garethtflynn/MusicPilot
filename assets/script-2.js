@@ -133,24 +133,25 @@ displayMessage ()
 // clickable feature to save artists in a designated area for future reference and discover
 $('#artistList').click(function (event){
 
-console.log(event.target.textContent)
-if (!favoritesStored.includes(event.target.textContent)) {
-  favoritesStored.push(event.target.textContent)
-  localStorage.setItem('savedFavorites', JSON.stringify(favoritesStored))
-} 
-})
-
-// appends favorites list onto the document 
-function showFavorites () {
-  var favoritesList = JSON.parse(localStorage.getItem  ('savedFavorites'))
-  var listItem = document.getElementById('savedData')
-  for (i = 0; i < favoritesList.length; i++){
-    var createItem = document.createElement('list')
-    createItem.classList.add('savedData')
-    createItem.textContent = favoritesList[i]
-  }
+  console.log(event.target.textContent)
+  if (!favoritesStored.includes(event.target.textContent)) {
+    favoritesStored.push(event.target.textContent)
+    localStorage.setItem('savedFavorites', JSON.stringify(favoritesStored))
+  } 
+  })
   
-}
+  // appends favorites list onto the document 
+  function showFavorites () {
+    var favoritesList = JSON.parse(localStorage.getItem  ('savedFavorites'))
+    var list = document.getElementById('savedData')
+      for (i = 0; i < favoritesList.length; i++){
+      $('#savedData').each(function(){
+        var createItem = document.createElement('li')
+        createItem.textContent = favoritesList[i]
+        list.append(createItem);
+      })
+      }   
+    }
 //asynchronysly loads the player; don't know what asynchronys means.
 
 
