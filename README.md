@@ -1,7 +1,7 @@
 # MusicPilot
 
 ## Description
-The Music Pilot allows the music enthusiast to retrieve music videos, a list of tracks and song lyrics, from their favorite artist with a simple search. Search for the artist of your choice and click the search button to see a display of artists list, a video, and song lyrics. The application allows the user to search for various musical content with the click of a button. We collaboratively worked with the data from the MusixMatch and YouTube Iframe APIs to search and display the content of the application.
+The Music Pilot allows the music enthusiast to retrieve music videos, a list of tracks and song lyrics, from their favorite artist with a simple search. Enter the artist of your choice in the search input field then click the search button to see a display of artists list, a video, and song lyrics. The application allows the user to search for various musical content with the click of a button. We collaboratively worked with the data from the MusixMatch and YouTube Iframe player APIs to search and display the content of the application. We used the local storage web API to construct a saved artists and tracks list to the application.gi
  
 ## Built With
 HTML
@@ -10,6 +10,7 @@ Javascript
 MusiXMatch API
 Youtube IFrame Player API
 Tailwindcss API 
+Local staorage API 
 
 
 
@@ -45,4 +46,17 @@ Henry Howe
 Gareth Flynn
 [website]https://github.com/garethtflynn 
 Robina Gonsahn
-[website]https://github.com/rgonsahn 
+[website]https://github.com/rgonsahn  
+
+## Feautures saved artist to a saved artist list  to refer 
+* Play and Pause control 
+(allows the user to play and pause video at your leisure)
+* Saved Artist List 
+(Gather a list of your favorite artist and save them for use when using the app) 
+* Top tracks  
+(saves favorite artists tracks) 
+* Lyrics  
+(Displays a snippet of the lyrics to your favorite song) 
+
+## Contributions 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
